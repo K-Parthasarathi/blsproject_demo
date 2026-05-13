@@ -11,37 +11,35 @@ const Login = () => {
       
       {/* LEFT PANEL */}
       <div className="left-panel">
-        <div className="logo-box">
           {/* <h1>Logo</h1> */}
           <Image
-            src="/blslogo.png"
-            alt="Logo"
-            width={100}
-            height={100}
+            src="/blswhite_logo.png"
+            alt="BLS360Logo"
+            width={500}
+            height={500}
           />
-        </div>
       </div>
 
       {/* RIGHT PANEL */}
       <div className="right-panel">
         <div className="login-card">
-          
+          <h1>IAM Secure</h1>
           <h2>Sign In</h2>
-          <p>Please login to continue</p>
+          <p>Login with your Email ID</p>
 
           {/* EMAIL */}
-          <label>Email</label>
-          <input type="text" placeholder="Enter your email" />
+          <label className="email_label">Email</label>
+          <input type="text" placeholder="your.email@example.com" />
 
           {/* PASSWORD */}
-          <label>Password</label>
-          <input type="password" placeholder="Enter your password" />
+          <label className="pwd_label">Password</label>
+          <input className="text-lg tracking-[0.2em] font-semibold" type="password" placeholder="........" />
 
           {/* OPTIONS */}
           <div className="options">
             <div className="check">
               <input type="checkbox" id="remember" />
-              <label htmlFor="remember">Remember Me</label>
+              <label htmlFor="remember" className="remember_me">Remember Me</label>
             </div>
             <span className="link">Forgot Password?</span>
           </div>

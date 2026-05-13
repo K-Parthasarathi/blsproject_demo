@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
 import "./signup.css";
 
 export default function Page() {
@@ -12,6 +13,7 @@ export default function Page() {
     });
 
     const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
     const [showPopup, setShowPopup] = useState(false);
 
   // Handle input change
@@ -32,7 +34,7 @@ export default function Page() {
 
     // Check password match
         if (formData.password !== formData.confirmPassword) {
-            setError("Passwords do not match");
+            setError("Incorrect username or password.");
             return;
         }
 
@@ -45,23 +47,62 @@ export default function Page() {
         }
 
         // Success
-        setError("");
-        setShowPopup(true);
 
         console.log("User Signup Data:", {
             email: formData.email,
             password: formData.password,
         });
+        
+        setError("");
+        setSuccess("Account Created Successfully!");
     };
 
     return (
         <div className="container">
-            <div className="card">
+            <div className="left-panel">
+                {/* <h1>Logo</h1> */}
+                <Image
+                    src="/blswhite_logo.png"
+                    alt="BLS360Logo"
+                    width={500}
+                    height={500}
+                />
+            </div>
+            <div className="right-panel">
+                <div className="card">
                 <div className="text-center flex flex-col gap-2">
                 <h1 className="header">IAM Secure</h1>
                 <h2 className="heading">Sign Up to IAM Secure</h2>
                 <p className="header_text">Enter your details to create your account</p>
                 </div>
+                {error && (
+                    <div className="error-box">
+                        <span className="error-text">{error}</span>
+                        
+                        <button
+                        type="button"
+                        onClick={() => setError("")}
+                        className="error-close"
+                        >
+                            ✕
+                        </button>
+                    </div>
+                )}
+                {success && (
+                    <div className="success-box">
+                        <span className="success-text">
+                            {success}
+                        </span>
+                        
+                        <button
+                        type="button"
+                        onClick={() => setSuccess("")}
+                        className="success-close"
+                        >
+                            ✕
+                        </button>
+                    </div>
+                )}
             <form onSubmit={handleSubmit} className="form">
                 <div>
                     <label className="email_label">Username or Email</label>
@@ -80,7 +121,7 @@ export default function Page() {
                         className="pwd_input text-lg font-semibold tracking-widest"
                         type="password"
                         name="password"
-                        placeholder="........."
+                        placeholder="........"
                         onChange={handleChange}
                         required
                     />
@@ -88,7 +129,7 @@ export default function Page() {
                 <div>
                     <label className="cpwd_label">Confirm Password</label>
                     <input
-                        className="cpwd_input text-lg tracking-[0.2em] font-semibold"
+                        className="cpwd_input text-lg tracking-widest font-semibold"
                         type="password"
                         name="confirmPassword"
                         placeholder="........"
@@ -106,18 +147,14 @@ export default function Page() {
                     <Link href="/login" className="login">Login</Link>
                 </div>
 
-        {/* Error message */}
-                {error && (
-                    <p className="text-red-500 text-sm mb-2">{error}</p>
-                )}
-
-        {/* Success popup */}
+        {/* Success popup
                 {showPopup && (
                     <p className="text-green-600 mt-2 text-center">Account Created Successfully!!
                     </p>
-                )}
+                )} */}
             </div>
         </div>
+    </div>     
     );
 }
 

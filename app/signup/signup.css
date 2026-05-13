@@ -3,14 +3,40 @@
 
 @layer components {
 
+    /* .container {
+        @apply flex flex-col md:flex-row h-screen bg-gray-100 ;
+    } */
+
     .container {
-        @apply min-h-screen flex items-center justify-center bg-gray-100;
+        @apply flex flex-col md:flex-row min-h-screen;
     }
+
+
+    
+    /* .left-panel {
+        @apply w-full md:w-[30%] h-[200px] md:h-full bg-[#2f80c3] flex items-center justify-center;
+    } */
+
+    .left-panel {
+        @apply w-full md:w-[30%] h-[200px] md:h-auto bg-[#2f80c3] flex items-center justify-center;
+    }
+
+    /* .right-panel { 
+        @apply w-full md:w-[60%] flex items-center justify-center p-6;
+    } */
+
+    .right-panel {
+        @apply w-full md:w-[65%] flex items-center justify-center px-4 md:px-10 py-6;
+    }
+
+    /* .card {
+        @apply bg-white p-8 rounded-lg w-full max-w-[400px] border border-blue-400 shadow-md;
+    } */
 
     .card {
-        @apply bg-white p-8 rounded-lg border border-gray-200 w-full max-w-[400px] shadow-md;
-    }
-
+        @apply w-full max-w-[400px] bg-white p-4 md:p-8 rounded-lg shadow-lg border border-blue-400; 
+        }
+    
     .header {
         @apply text-3xl font-bold text-blue-600 text-center;
     }
@@ -24,7 +50,7 @@
     }
     
     .form { 
-        @apply w-full flex flex-col gap-4 mt-6;
+        @apply w-full flex flex-col gap-3 mt-3;
     }
 
     .email_label,
@@ -34,7 +60,7 @@
     }
     @layer base{
         input {
-        @apply w-[330px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500;
+        @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500;
         }
     }
 
@@ -43,11 +69,26 @@
     }
 
     .footer {
-        @apply mt-6 text-center text-sm text-gray-500;
+        @apply mt-4 text-center text-sm text-gray-500;
     }
 
     .login {
         @apply text-blue-500 font-semibold hover:underline ml-5;
+    }
+
+    .error-box{
+        @apply flex items-center justify-between 
+        border border-red-300 bg-red-50 text-red-700 rounded-sm px-6 py-3 mt-3 mb-3;
+    }
+    .error-text{
+        @apply flex-1 text-center font-medium text-black; 
+    }
+
+    .success-box{
+        @apply flex items-center justify-between border border-green-300 bg-green-50 rounded-sm px-6 py-3 mt-3 mb-3 text-green-700;
+    }
+    .success-text{
+        @apply flex-1 text-center font-medium;
     }
 }
 
