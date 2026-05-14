@@ -14,7 +14,7 @@ export default function Navbar() {
             <div className="nav-left">
                 {/* <span className="back">←</span> */}
                 <ShieldCheck className="logo-icon" />
-                <span className="nav-title">IAM Secure</span>
+                <span className="nav-title">BLSecure360</span>
             </div>
 
         {/* Right side */}

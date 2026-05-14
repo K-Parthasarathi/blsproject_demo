@@ -15,7 +15,7 @@
 }
 
 .nav-title{
-    @apply text-2xl text-blue-600 font-medium;
+    @apply text-2xl text-blue-600 font-bold;
 }
 .back {
     @apply text-lg cursor-pointer;

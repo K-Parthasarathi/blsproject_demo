@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import "./signup.css";
 
 export default function Page() {
+    const router = useRouter();
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -48,10 +50,13 @@ export default function Page() {
 
         // Success
 
-        console.log("User Signup Data:", {
-            email: formData.email,
-            password: formData.password,
-        });
+        // console.log("User Signup Data:", {
+        //     email: formData.email,
+        //     password: formData.password,
+        // });
+        setTimeout(() => {
+            router.push("/home_page");
+        }, 500);
         
         setError("");
         setSuccess("Account Created Successfully!");

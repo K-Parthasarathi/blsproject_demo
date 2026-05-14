@@ -32,9 +32,9 @@
     @apply relative overflow-hidden rounded-xl border p-6 bg-white;
 }
 
-.card-active {
+/* .card-active {
     @apply  border-blue-400 bg-blue-50;
-}
+} */
 
 .card-disabled {
     @apply border-gray-200 bg-white opacity-70;
@@ -63,18 +63,22 @@
 
 .product-image{
     position: absolute;
-    inset: 0;
+    width: auto;
+    height: 90%;
 
-    background-size: 80px;
-    background-repeat: no-repeat;
-    background-position: center center;
+    top: 50%;
+    left: 50%;
 
-    opacity: 0.08;
+    transform: translate(-50%, -50%);
+
+    object-fit: contain;
+
+    opacity: 0.5;
 
     z-index: 0;
 }
 
-.card > *{
+.card-content{
     position: relative;
     z-index: 1;
 }
@@ -85,7 +89,7 @@
 }
 
 .card-desc {
-    @apply text-gray-600 text-sm;
+    @apply text-gray-900 text-sm;
 }
 
 /* Status */

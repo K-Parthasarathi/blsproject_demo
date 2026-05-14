@@ -6,7 +6,6 @@ import { ShieldCheck​, Key, Database, Shield } from "lucide-react";
 import "./home.css";
 import Nav from "../navbar/nav"
 
-
 const productIcons = {
     "SailPoint Identity Security Cloud": ​ShieldCheck,
     "SailPoint Identity IQ": Key,
@@ -53,7 +52,7 @@ const products = [
         <Nav/>
         <div className="container">
             <div className="header">
-            <h1 className="title">IAM Product Selection</h1>
+            <h1 className="title">IAM Products</h1>
             <p className="subtitle">
                 Choose an Identity and Access Management (IAM) product to begin managing your organization's digital identities.
             </p>
@@ -74,12 +73,13 @@ const products = [
                 />
             </div>
 
-            <h2 className="card-title">{product.name}</h2>
-            <p className="card-desc">{product.desc}</p>
+            <div className="card-content">
+                <h2 className="card-title">{product.name}</h2>
+                <p className="card-desc">{product.desc}</p>
 
-            <p className="status">
-                Status:
-                <span
+                <p className="status">  
+                    Status:
+                    <span
                     className={
                         product.available
                         ? "status-badge-active"
@@ -88,11 +88,12 @@ const products = [
                 >
                     {product.status}
                 </span>
-            </p>
-            <button
+
+                </p>
+                <button
                 onClick={() =>
                     product.available &&
-                    router.push(`/product/${index}`)
+                    router.push("/Authentication")
                 }
                 disabled={!product.available}
                 className={`btn ${
@@ -101,6 +102,7 @@ const products = [
             >
                 {product.available ? "Select Product" : "Not Available"}
             </button>
+            </div>
             </div>
             );
         })}

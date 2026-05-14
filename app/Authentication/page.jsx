@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import "./App.css";
+import Nav from "../navbar/nav"
 import {
   ChevronLeft,
   User,
@@ -14,22 +15,10 @@ function App() {
   return (
     <div className="app">
       {/* Header */}
-      <header className="header">
-        <div className="header-left">
-          <button className="back-btn">
-            <ChevronLeft size={22} />
-          </button>
+      <>
+      <Nav/>
 
-          <div className="logo-section">
-            <div className="logo-box">
-              <div className="logo-inner"></div>
-            </div>
-
-            <h1 className="logo-text">IAM Secure</h1>
-          </div>
-        </div>
-
-        {/* Profile */}
+        {/* Profile
         <div className="profile-wrapper">
           <button
             className="profile-btn"
@@ -47,8 +36,8 @@ function App() {
           {open && (
             <div className="dropdown">
               <div className="dropdown-user">
-                <h3>John Doe</h3>
-                <p>john.doe@iamsecure.com</p>
+                <h3>John Durairaj</h3>
+                <p>john.durairaj@iamsecure.com</p>
               </div>
 
               <div className="divider"></div>
@@ -71,8 +60,8 @@ function App() {
               </button>
             </div>
           )}
-        </div>
-      </header>
+        </div> */}
+      </>
 
       {/* Main */}
       <main className="main-content">
@@ -127,7 +116,6 @@ function App() {
           </form>
         </div>
       </main>
-
     </div>
   );
 }
