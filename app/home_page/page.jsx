@@ -51,12 +51,12 @@ const products = [
         <>
         <Nav/>
         <div className="container">
-            <div className="header">
-            <h1 className="title">IAM Products</h1>
-            <p className="subtitle">
-                Choose an Identity and Access Management (IAM) product to begin managing your organization's digital identities.
-            </p>
-        </div>
+            <div className="product-selection-header">
+                <h1 className="title">IAM Products</h1>
+                <p className="subtitle">
+                    Choose an Identity and Access Management (IAM) product to begin managing your organization's digital identities.
+                </p>
+            </div>
         
         <div className="grid-container">
             {products.map((product, index) => {
@@ -67,16 +67,17 @@ const products = [
                     product.available ? "card-active" : "card-disabled"
                 }`}
             >
-            {/* ✅ FIXED ICON */}
+            {/* FIXED ICON */}
             <div className="icon">
-                <img src={product.image} alt={product.name} className="product-image"
+                <img src={product.image} 
+                alt={product.name} className="product-image"
                 />
+                <h2 className="card-title">{product.name}
+                </h2>
             </div>
 
             <div className="card-content">
-                <h2 className="card-title">{product.name}</h2>
                 <p className="card-desc">{product.desc}</p>
-
                 <p className="status">  
                     Status:
                     <span

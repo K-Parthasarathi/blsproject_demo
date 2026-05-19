@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import "./signup.css";
+import "./sign_up.css";
 
 export default function Page() {
     const router = useRouter();
@@ -63,7 +63,7 @@ export default function Page() {
     };
 
     return (
-        <div className="container">
+        <div className="main-container">
             <div className="left-panel">
                 {/* <h1>Logo</h1> */}
                 <Image
@@ -74,7 +74,7 @@ export default function Page() {
                 />
             </div>
             <div className="right-panel">
-                <div className="card">
+                <div className="signup-card">
                 <div className="text-center flex flex-col gap-2">
                 <h1 className="header">IAM Secure</h1>
                 <h2 className="heading">Sign Up to IAM Secure</h2>

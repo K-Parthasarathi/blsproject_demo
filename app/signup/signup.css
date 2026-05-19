@@ -1,39 +1,40 @@
 @import "tailwindcss";
 
-
-@layer components {
-
     /* .container {
         @apply flex flex-col md:flex-row h-screen bg-gray-100 ;
     } */
 
     .container {
-        @apply flex flex-col md:flex-row min-h-screen;
+        @apply min-h-screen w-full flex flex-col md:flex-row;
     }
 
-
-    
     /* .left-panel {
         @apply w-full md:w-[30%] h-[200px] md:h-full bg-[#2f80c3] flex items-center justify-center;
     } */
 
     .left-panel {
-        @apply w-full md:w-[30%] h-[200px] md:h-auto bg-[#2f80c3] flex items-center justify-center;
+        @apply w-full md:w-[30%] lg:w-[30%] h-[30%] md:h-full bg-[#2f80c3] h-[200px] flex justify-center items-center;
     }
+
+    /* h-[200px] */
 
     /* .right-panel { 
         @apply w-full md:w-[60%] flex items-center justify-center p-6;
     } */
 
-    .right-panel {
+    /* .right-panel {
         @apply w-full md:w-[65%] flex items-center justify-center px-4 md:px-10 py-6;
+    } */
+
+    .right-panel {
+        @apply w-full md:w-[60%] lg:w-[65%] h-[70%] md:h-full bg-[#f4f4f4] flex justify-center items-center p-5;
     }
 
     /* .card {
         @apply bg-white p-8 rounded-lg w-full max-w-[400px] border border-blue-400 shadow-md;
     } */
 
-    .card {
+    .signup-card {
         @apply w-full max-w-[400px] bg-white p-4 md:p-8 rounded-lg shadow-lg border border-blue-400; 
         }
     
@@ -90,7 +91,7 @@
     .success-text{
         @apply flex-1 text-center font-medium;
     }
-}
+
 
 
 /* @layer components{
@@ -128,10 +129,10 @@
 
 
 
-:root {
+/* :root {
     --background: #ffffff;
     --foreground: #171717;
-}
+} */
 
 /* @theme inline {
   --color-background: var(--background);
@@ -148,11 +149,11 @@
 } */
 
 
-body {
+/* body {
     background: var(--background);
     color: var(--foreground);
     font-family: Arial, Helvetica,   sans-serif;
-}
+} */
 
 /* Container */
 /* @layer{

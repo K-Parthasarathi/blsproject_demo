@@ -2,14 +2,19 @@
 
 import React, { useState } from "react";
 import { User, Settings, LogOut } from "lucide-react";
-import { ShieldCheck } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { ShieldCheck, ChevronLeft } from "lucide-react";
 import "./nav.css";
 
 export default function Navbar() {
+    const router = useRouter();
     const [open, setOpen] = useState(false);
 
     return (
         <header className="navbar">
+            <button className="back-btn" onClick={() => router.back()}>
+                <ChevronLeft size={22} />
+            </button>
         {/* Left side */}
             <div className="nav-left">
                 {/* <span className="back">←</span> */}
