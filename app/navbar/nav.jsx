@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { User, Settings, LogOut } from "lucide-react";
-import { ShieldCheck } from "lucide-react";
+import { ShieldCheck, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import "./nav.css";
 
