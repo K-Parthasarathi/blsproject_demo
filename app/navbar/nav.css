@@ -54,7 +54,8 @@
 }
 
 .logout {
-    @apply text-red-600;
+    @apply text-red-600 flex items-center;
+           
 }
 
 /* MOBILE */

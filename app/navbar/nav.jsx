@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { User, Settings, LogOut } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { ShieldCheck, ChevronLeft } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
+import Link from "next/link";
 import "./nav.css";
 
 export default function Navbar() {
@@ -43,7 +43,7 @@ export default function Navbar() {
 
                         <div className="divider"></div>
 
-                        <div className="menu-item logout">Logout</div>
+                        <Link href="/login" className="menu-item logout">Logout</Link>
                     </div>
                 )}
             </div>

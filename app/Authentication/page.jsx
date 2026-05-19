@@ -1,69 +1,45 @@
 "use client";
+
 import React, { useState } from "react";
 import "./App.css";
-import Nav from "../navbar/nav"
-import {
-  ChevronLeft,
-  User,
-  Settings,
-  LogOut,
-} from "lucide-react";
+import Nav from "../navbar/nav";
+import { useRouter } from "next/navigation";
 
 function App() {
-  const [open, setOpen] = useState(true);
+  const router = useRouter();
+
+  const [tenant, setTenant] = useState("");
+  const [clientId, setClientId] = useState("");
+  const [clientSecret, setClientSecret] = useState("");
+  const [error, setError] = useState("");
+
+  // Example correct credentials
+  const correctTenant = "mysailpointtenant";
+  const correctClientId = "admin123";
+  const correctClientSecret = "password123";
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Validation
+    if (
+      tenant === correctTenant &&
+      clientId === correctClientId &&
+      clientSecret === correctClientSecret
+    ) {
+      setError("");
+
+      // Navigate to next page
+      router.push("/dashboard");
+    } else {
+      setError("Invalid credentials. Please try again.");
+    }
+  };
 
   return (
     <div className="app">
-      {/* Header */}
-      <>
-      <Nav/>
+      <Nav />
 
-        {/* Profile
-        <div className="profile-wrapper">
-          <button
-            className="profile-btn"
-            onClick={() => setOpen(!open)}
-          >
-            <img
-              src="https://i.pravatar.cc/100"
-              alt="profile"
-              className="profile-img"
-            />
-
-            <span className="online-dot"></span>
-          </button>
-
-          {open && (
-            <div className="dropdown">
-              <div className="dropdown-user">
-                <h3>John Durairaj</h3>
-                <p>john.durairaj@iamsecure.com</p>
-              </div>
-
-              <div className="divider"></div>
-
-              <button className="dropdown-item">
-                <User size={18} />
-                <span>Profile</span>
-              </button>
-
-              <button className="dropdown-item">
-                <Settings size={18} />
-                <span>Settings</span>
-              </button>
-
-              <div className="divider"></div>
-
-              <button className="dropdown-item logout">
-                <LogOut size={18} />
-                <span>Logout</span>
-              </button>
-            </div>
-          )}
-        </div> */}
-      </>
-
-      {/* Main */}
       <main className="main-content">
         <div className="auth-card">
           <h2>SailPoint ISC Authentication</h2>
@@ -84,13 +60,20 @@ function App() {
             </p>
           </div>
 
+          {/* Error Message */}
+          {error && (
+            <p className="error-message">{error}</p>
+          )}
+
           {/* Form */}
-          <form className="form">
+          <form className="form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label>Tenant Name</label>
               <input
                 type="text"
                 placeholder="e.g., mysailpointtenant"
+                value={tenant}
+                onChange={(e) => setTenant(e.target.value)}
               />
             </div>
 
@@ -99,6 +82,8 @@ function App() {
               <input
                 type="text"
                 placeholder="e.g., your-client-id-xyz"
+                value={clientId}
+                onChange={(e) => setClientId(e.target.value)}
               />
             </div>
 
@@ -107,10 +92,14 @@ function App() {
               <input
                 type="password"
                 placeholder="e.g., your-client-secret-abc"
+                value={clientSecret}
+                onChange={(e) =>
+                  setClientSecret(e.target.value)
+                }
               />
             </div>
 
-            <button className="connect-btn">
+            <button type="submit" className="connect-btn">
               Connect
             </button>
           </form>
