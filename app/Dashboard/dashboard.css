@@ -1,362 +1,322 @@
-/* ===========================
-   GLOBAL
-=========================== */
+@import "tailwindcss";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@layer components {
 
-body {
-  background: #f5f7fb;
-  font-family: Inter, sans-serif;
-  color: #222;
-}
+  /* ======================================================
+     GLOBAL
+  ====================================================== */
 
-.dashboard {
-  padding: 24px;
-}
-
-
-/* ===========================
-   TITLE
-=========================== */
-
-.title-row {
-  margin-top: 40px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.title-row h1 {
-  font-size: 35px;
-  font-weight: 700;
-}
-
-.product-btn {
-  border: none;
-  background: #f3f4f6;
-
-  padding: 14px 22px;
-
-  border-radius: 10px;
-
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  cursor: pointer;
-
-  font-size: 15px;
-}
-
-.product-btn:hover {
-  background: #e9edf3;
-}
-
-/* ===========================
-   TOP CARDS
-=========================== */
-
-.top-cards {
-  margin-top: 35px;
-
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 28px;
-}
-
-/* ===========================
-   CARD
-=========================== */
-
-.card {
-  background: white;
-
-  border-radius: 18px;
-
-  border: 1px solid #ececec;
-
-  padding: 28px;
-
-
-  transition: .3s;
-}
-
-
-
-/* ===========================
-   CARD HEADER
-=========================== */
-
-.card-header {
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
-
-  margin-bottom: 24px;
-}
-
-.card-header h3 {
-  font-size: 20px;
-
-  font-weight: 600;
-}
-
-.card-header svg {
-  font-size: 28px;
-
-  color: #5b6577;
-}
-
-/* ===========================
-   LEGEND
-=========================== */
-
-.legend {
-  display: flex;
-
-  gap: 13px;
-
-  margin-bottom: 15px;
-
-  flex-wrap: wrap;
-}
-
-.legend span {
-  display: flex;
-
-  align-items: center;
-
-  gap: 8px;
-
-  font-size: 15px;
-}
-
-.dot {
-  width: 12px;
-
-  height: 12px;
-
-  border-radius: 50%;
-}
-
-.green {
-  background: #22c55e;
-}
-
-.red {
-  background: #ef4444;
-}
-
-.yellow {
-  background: #f4b400;
-}
-
-/* ===========================
-   PIE CHART
-=========================== */
-
-.chart-box {
-  position: relative;
-
-  width: 100%;
-
-  height: 250px;
-}
-
-.center-text {
-  position: absolute;
-
-  top: 45%;
-
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-
-  text-align: center;
-}
-
-.center-text h2 {
-  font-size: 35px;
-
-  font-weight: bold;
-}
-
-.center-text p {
-  color: gray;
-
-  font-size: 20px;
-}
-
-/* ===========================
-   VALUES
-=========================== */
-
-.card-value {
-  text-align: center;
-
-  font-size: 30px;
-
-  font-weight: bold;
-}
-
-
-.details {
-  display: block;
-  width: 100%;
-  margin-top: 12px;
-  text-align: center;
-  color: #888;
-  font-size: 14px;
-  text-decoration: underline;
-}
-
-/* ===========================
-   USERS CARD
-=========================== */
-
-.bottom-card {
-  margin-top: 30px;
-
-  background: white;
-
-  border-radius: 18px;
-
-  border: 1px solid #ececec;
-
-  padding: 30px;
-
-  display: grid;
-
-  grid-template-columns: 320px 1fr;
-
-  gap: 25px;
-
-  transition: .3s;
-}
-
-
-
-.users-left h1 {
-  margin-top: 35px;
-
-  font-size: 50px;
-
-  font-weight: bold;
-}
-
-.growth {
-  margin-top: 25px;
-
-  font-size: 18px;
-
-  color: #666;
-}
-
-.growth span {
-  color: #22c55e;
-
-  font-weight: 700;
-}
-
-.users-chart {
-  width: 100%;
-  height: 300px;
-}
-
-/* ===========================
-   RECHARTS
-=========================== */
-
-.recharts-default-tooltip {
-  border-radius: 10px !important;
-}
-
-.recharts-cartesian-grid line {
-  stroke: #ececec;
-}
-
-.recharts-cartesian-axis-line {
-  stroke: #ddd;
-}
-
-.recharts-cartesian-axis-tick-value {
-  font-size: 13px;
-}
-
-.recharts-legend-item-text {
-  font-size: 14px;
-}
-
-/* ===========================
-   RESPONSIVE
-=========================== */
-
-@media (max-width:1200px) {
-
-  .top-cards {
-    grid-template-columns: 1fr;
+  body {
+    @apply bg-[#f5f7fb] font-sans text-[#222];
   }
 
-  .bottom-card {
-    grid-template-columns: 1fr;
+  .dashboard {
+    @apply min-h-screen bg-[#f5f7fb] px-6 py-4;
   }
 
-}
-
-@media (max-width:900px) {
-
-  .navbar {
-    flex-direction: column;
-
-    height: auto;
-
-    gap: 15px;
-
-    padding: 20px;
-  }
+  /* ======================================================
+     TITLE
+  ====================================================== */
 
   .title-row {
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 20px;
+    @apply mt-4 mb-4 flex items-center justify-between gap-2;
   }
 
   .title-row h1 {
-    font-size: 36px;
+    @apply text-2xl font-bold text-slate-800;
   }
 
-}
+  .product-btn {
+    @apply flex items-center gap-2 rounded-xl bg-gray-100 px-5 py-3 text-sm font-medium transition hover:bg-gray-200;
+  }
 
-@media (max-width:600px) {
+  /* ======================================================
+     TOP CARDS
+  ====================================================== */
 
-  .dashboard {
-    padding: 15px;
+  .top-cards {
+    @apply grid grid-cols-3 gap-4;
   }
 
   .card {
-    padding: 18px;
+    @apply flex h-[320px] flex-col rounded-2xl border border-gray-200 bg-white p-4 shadow-sm;
+  }
+
+  /* ======================================================
+     CARD HEADER
+  ====================================================== */
+
+  .card-header {
+    @apply mb-3 flex items-center justify-between;
   }
 
   .card-header h3 {
-    font-size: 20px;
+    @apply text-lg font-semibold text-slate-800;
+  }
+
+  .card-header svg {
+    @apply text-2xl text-slate-500;
+  }
+
+  /* ======================================================
+     LEGEND
+  ====================================================== */
+
+  .legend {
+    @apply mb-3 flex flex-wrap gap-x-4 gap-y-2;
+  }
+
+  .legend span {
+    @apply flex items-center gap-2 text-sm text-slate-600;
+  }
+
+  .dot {
+    @apply h-3 w-3 rounded-full;
+  }
+
+  .green {
+    @apply bg-green-500;
+  }
+
+  .yellow {
+    @apply bg-yellow-400;
+  }
+
+  .red {
+    @apply bg-red-500;
+  }
+
+  /* ======================================================
+     CHARTS
+  ====================================================== */
+
+  .chart-box {
+    position: relative;
+    width: 100%;
+    height: 170px;
+  }
+
+  .center-text {
+    @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center;
+  }
+
+  .center-text h2 {
+    @apply text-2xl font-bold text-slate-800;
+  }
+
+  .center-text p {
+    @apply text-base text-gray-500;
+  }
+
+  /* ======================================================
+     CARD FOOTER
+  ====================================================== */
+
+  .card-value {
+    @apply mt-2 text-center text-2xl font-bold text-slate-800;
+  }
+
+  .details {
+    @apply mt-2 block text-center text-sm text-gray-500 underline underline-offset-2 hover:text-slate-700;
+  }
+
+  /* ======================================================
+     USERS CARD
+  ====================================================== */
+
+  .bottom-card {
+    @apply mt-4 grid grid-cols-[250px_1fr] gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm;
+  }
+
+  .users-left {
+    @apply flex flex-col justify-center;
   }
 
   .users-left h1 {
-    font-size: 40px;
+    @apply mt-4 text-4xl font-bold text-slate-800;
   }
 
-  .card-value {
-    font-size: 32px;
+  .growth {
+    @apply mt-4 text-base text-gray-600;
+  }
+
+  .growth span {
+    @apply font-bold text-green-500;
+  }
+
+  .users-chart {
+    width: 100%;
+    height: 180px;
+  }
+
+  /* ======================================================
+     RECHARTS
+  ====================================================== */
+
+  .recharts-default-tooltip {
+    border-radius: 10px !important;
+  }
+
+  .recharts-cartesian-grid line {
+    stroke: #ececec;
+  }
+
+  .recharts-cartesian-axis-line {
+    stroke: #dddddd;
+  }
+
+  .recharts-cartesian-axis-tick-value {
+    font-size: 12px;
+  }
+
+  .recharts-legend-item-text {
+    font-size: 13px;
+  }
+
+    /* ======================================================
+     TABLET
+  ====================================================== */
+
+  @media (max-width: 1024px) {
+
+    .dashboard {
+      @apply px-5 py-4;
+    }
+
+    .title-row {
+      @apply mt-4 flex-col items-start gap-2;
+    }
+
+    .product-btn {
+      @apply self-start;
+    }
+
+    .top-cards {
+      @apply grid grid-cols-2 gap-4;
+    }
+
+    .card:last-child {
+      @apply col-span-2;
+    }
+
+    .card {
+      @apply h-[320px];
+    }
+
+    .chart-box {
+      height: 100%;
+    }
+
+    .bottom-card {
+      @apply grid-cols-1;
+    }
+
+    .users-chart {
+      height: 220px;
+    }
+
+  }
+
+  /* ======================================================
+     MOBILE
+  ====================================================== */
+
+  @media (max-width: 700px) {
+
+    .dashboard {
+      @apply px-4 py-4;
+      overflow-y: auto;
+    }
+
+    .title-row {
+      @apply mt-4 flex-col items-start gap-4;
+    }
+
+    .title-row h1 {
+      @apply text-2xl;
+    }
+
+    .product-btn {
+      @apply w-full justify-center;
+    }
+
+    .top-cards {
+      @apply flex flex-wrap gap-4;
+    }
+
+    .card {
+      @apply w-full h-auto p-4;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .card-header {
+      @apply mb-2;
+    }
+
+    .card-header h3 {
+      @apply text-base;
+    }
+
+    .card-header svg {
+      @apply text-xl;
+    }
+
+    .legend {
+      @apply gap-x-3 gap-y-2;
+    }
+
+    .legend span {
+      @apply text-xs;
+    }
+
+    .chart-box {
+      width: 100%;
+      height: 180px;
+      position: relative;
+    }
+
+    .center-text h2 {
+      @apply text-2xl;
+    }
+
+    .center-text p {
+      @apply text-sm;
+    }
+
+    .card-value {
+      @apply text-2xl;
+    }
+
+    .details {
+      @apply text-xs;
+    }
+
+    .bottom-card {
+      @apply grid grid-cols-1 gap-4 p-4;
+    }
+
+    .users-left {
+      @apply text-center;
+    }
+
+    .users-left h1 {
+      @apply mt-3 text-3xl;
+    }
+
+    .growth {
+      @apply mt-2 text-sm;
+    }
+
+    .users-chart {
+      width: 100%;
+      height: 200px;
+    }
+
+    .recharts-cartesian-axis-tick-value {
+      font-size: 10px;
+    }
+
   }
 
 }

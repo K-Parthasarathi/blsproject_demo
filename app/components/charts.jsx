@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import {
   ResponsiveContainer,
   PieChart,
@@ -16,28 +15,60 @@ import {
   Line,
   AreaChart,
   Area,
-  LabelList,
 } from "recharts";
 
-/* ---------------- Doughnut ---------------- */
+/* ===========================
+   SOURCE STATUS
+=========================== */
+const SourceTooltip = ({ active, payload }) => {
+  if (!active || !payload || !payload.length) return null;
+
+  const item = payload[0].payload;
+
+  return (
+    <div
+      style={{
+        background: "#ffffff",
+        border: "1px solid #e2e8f0",
+        borderRadius: "8px",
+        padding: "8px 12px",
+        boxShadow: "0 6px 16px rgba(0,0,0,0.12)",
+        fontSize: "13px",
+    
+      }}
+    >
+      <strong>{item.name}</strong>
+      <br />
+      {item.count}
+    </div>
+  );
+};
 
 export const SourceChart = () => {
   const data = [
-    { name: "Healthy", value: 94 },
-    { name: "Error", value: 6 },
+     {
+    name: "Running",
+    value: 94,
+    count: "15 / 16 Running",
+  },
+  {
+    name: "Error",
+    value: 6,
+    count: "1 / 16 Error",
+  },
   ];
 
   const COLORS = ["#22c55e", "#ef4444"];
 
   return (
     <div className="chart-box">
-      <ResponsiveContainer width="100%" height={220}>
+      <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
             data={data}
             dataKey="value"
-            innerRadius={70}
-            outerRadius={95}
+            innerRadius={50}
+            outerRadius={72}
             startAngle={90}
             endAngle={-270}
             stroke="none"
@@ -46,6 +77,11 @@ export const SourceChart = () => {
               <Cell key={index} fill={COLORS[index]} />
             ))}
           </Pie>
+    <Tooltip
+    content={<SourceTooltip />}
+    cursor={false}
+    position={{ x: 270, y: 60 }}
+  />
         </PieChart>
       </ResponsiveContainer>
 
@@ -57,36 +93,64 @@ export const SourceChart = () => {
   );
 };
 
-/* ---------------- Bar ---------------- */
+/* ===========================
+   CERTIFICATION STATUS
+=========================== */
 
 export const CertificationChart = () => {
   const data = [
     { name: "Completed", value: 9, fill: "#22c55e" },
-    { name: "Inprogress", value: 8, fill: "#F4B400" },
-    { name: "Not started", value: 3, fill: "#EF4444" },
+    { name: "In Progress", value: 8, fill: "#F4B400" },
+    { name: "Not Started", value: 3, fill: "#EF4444" },
   ];
 
   return (
-    <ResponsiveContainer width="100%" height={250}>
-      <BarChart data={data}>
-        <CartesianGrid vertical={false} strokeDasharray="4 4" />
+    <div className="chart-box">
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart
+          data={data}
+          margin={{
+            top: 5,
+            right: 10,
+            left: -20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid vertical={false} strokeDasharray="4 4" />
 
-        <XAxis dataKey="name" />
+          <XAxis
+            dataKey="name"
+            tick={{ fontSize: 11 }}
+            interval={0}
+          />
 
-        <YAxis />
+          <YAxis />
 
-        <Tooltip />
+          <Tooltip
+            cursor={false}
+            formatter={(value) => [value, "Count"]}
+          />
 
-        <Bar
-  dataKey="value"
-  radius={[8, 8, 0, 0]}
-/>
-      </BarChart>
-    </ResponsiveContainer>
+          <Bar
+            dataKey="value"
+            radius={[8, 8, 0, 0]}
+          >
+            {data.map((entry, index) => (
+              <Cell
+                key={index}
+                fill={entry.fill}
+              />
+            ))}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 
-/* ---------------- Line ---------------- */
+/* ===========================
+   VIRTUAL APPLIANCE
+=========================== */
 
 export const ApplianceChart = () => {
   const data = [
@@ -100,38 +164,49 @@ export const ApplianceChart = () => {
   ];
 
   return (
-    <ResponsiveContainer width="100%" height={250}>
-      <LineChart data={data}>
-        <CartesianGrid strokeDasharray="4 4" />
+    <div className="chart-box">
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart
+          data={data}
+          margin={{
+            top: 5,
+            right: 10,
+            left: -20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="4 4" />
 
-        <XAxis dataKey="day" />
+          <XAxis dataKey="day" />
 
-        <YAxis />
+          <YAxis />
 
-        <Tooltip />
+          <Tooltip cursor={false} />
 
-        <Line
-  dataKey="healthy"
-  stroke="#22c55e"
-  strokeWidth={3}
-  dot={{ r: 5 }}
-/>
-
-        <Line
-          dataKey="error"
-          stroke="#ef4444"
-          strokeWidth={3}
-          dot={{ r: 5 }}
-          
-          
+          <Line
+            type="monotone"
+            dataKey="healthy"
+            stroke="#22c55e"
+            strokeWidth={2}
+            dot={{ r: 3 }}
           />
-        
-      </LineChart>
-    </ResponsiveContainer>
+
+          <Line
+            type="monotone"
+            dataKey="error"
+            stroke="#ef4444"
+            strokeWidth={2}
+            dot={{ r: 3 }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 
-/* ---------------- Area ---------------- */
+/* ===========================
+   ACTIVE USERS
+=========================== */
 
 export const UsersChart = () => {
   const data = [
@@ -143,45 +218,49 @@ export const UsersChart = () => {
   ];
 
   return (
-    <ResponsiveContainer width="100%" height={260}>
-      <AreaChart data={data}>
-        <defs>
-          <linearGradient
-            id="fillUsers"
-            x1="0"
-            y1="0"
-            x2="0"
-            y2="1"
-          >
-            <stop
-              offset="5%"
-              stopColor="#2563eb"
-              stopOpacity={0.35}
-            />
+    <div className="users-chart">
+      <ResponsiveContainer width="100%" height="100%">
+        <AreaChart
+          data={data}
+          margin={{
+            top: 5,
+            right: 10,
+            left: -20,
+            bottom: 5,
+          }}
+        >
+          <defs>
+            <linearGradient id="fillUsers" x1="0" y1="0" x2="0" y2="1">
+              <stop
+                offset="5%"
+                stopColor="#2563eb"
+                stopOpacity={0.35}
+              />
+              <stop
+                offset="95%"
+                stopColor="#2563eb"
+                stopOpacity={0}
+              />
+            </linearGradient>
+          </defs>
 
-            <stop
-              offset="95%"
-              stopColor="#2563eb"
-              stopOpacity={0}
-            />
-          </linearGradient>
-        </defs>
+          <CartesianGrid strokeDasharray="4 4" />
 
-        <CartesianGrid strokeDasharray="4 4" />
+          <XAxis dataKey="date" />
 
-        <XAxis dataKey="date" />
+          <YAxis />
 
-        <YAxis />
+          <Tooltip cursor={false} />
 
-        <Tooltip />
-
-        <Area
-  dataKey="users"
-  stroke="#2563eb"
-  strokeWidth={3}
-  fill="url(#fillUsers)"
-/>
-      </AreaChart>
-    </ResponsiveContainer>
+          <Area
+            type="monotone"
+            dataKey="users"
+            stroke="#2563eb"
+            strokeWidth={3}
+            fill="url(#fillUsers)"
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+    </div>
   );
 };

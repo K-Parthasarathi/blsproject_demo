@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@layer components {
+
+  /* ===========================
+      PAGE
+  ============================ */
+
+  .source-page{
+    @apply h-screen bg-white overflow-hidden;
+  }
+
+  .dashboard{
+    @apply w-full;
+  }
+
+  .source-card{
+  @apply max-w-7xl mx-auto px-10 pt-6 pb-4 h-[calc(100vh-72px)];
+  }
+
+  /* ===========================
+      HEADER
+  ============================ */
+
+  .page-title{
+    @apply text-3xl font-bold text-slate-800 text-center;
+  }
+
+  .page-subtitle{
+    @apply mt-4 text-center text-slate-500 text-base ;
+  }
+
+  /* ===========================
+      TABLE
+  ============================ */
+
+  .table-wrapper{
+    @apply rounded-2xl border border-slate-200 overflow-hidden shadow-sm;
+  }
+
+  .source-table{
+    @apply w-full border-collapse;
+  }
+
+  .source-table thead{
+    @apply bg-slate-50;
+  }
+
+  .source-table thead th{
+    @apply text-left
+    text-slate-700
+    text-lg
+    font-semibold
+    px-8
+    py-4
+    border-b
+    border-slate-200;
+  }
+
+  .source-table tbody tr{
+    @apply bg-white transition-all duration-200 hover:bg-slate-50;
+  }
+
+  .source-table tbody tr:not(:last-child){
+    @apply border-b border-slate-100;
+  }
+
+  .source-table tbody td{
+    @apply px-8 py-4 text-slate-700;
+  }
+
+  /* ===========================
+      STATUS
+  ============================ */
+
+  .status-badge{
+    @apply inline-flex
+    items-center
+    justify-center
+    min-w-20
+    px-4
+    py-2
+    rounded-full
+    text-sm
+    font-semibold;
+  }
+
+  .status-active{
+    @apply bg-emerald-50 text-emerald-800 border border-emerald-100;
+  }
+
+  .status-error{
+    @apply bg-red-50 text-red-600 border border-red-100;
+  }
+
+}

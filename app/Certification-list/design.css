@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@layer components {
+
+  /* ==========================================
+      PAGE
+  ========================================== */
+
+  .certification-page {
+    @apply h-screen bg-white overflow-hidden;
+  }
+
+  .certification-container {
+    @apply max-w-7xl mx-auto px-10 pt-6 pb-6;
+  }
+
+  /* ==========================================
+      HEADER
+  ========================================== */
+
+  .page-header {
+    @apply text-center mb-8;
+  }
+
+  .page-title {
+    @apply text-3xl font-bold text-slate-800;
+  }
+
+  .page-subtitle {
+    @apply mt-4 text-slate-500 text-base;
+  }
+
+  /* ==========================================
+      TABLE CONTAINER
+  ========================================== */
+
+  .table-wrapper {
+    @apply border border-slate-200 rounded-2xl shadow-sm overflow-hidden bg-white;
+  }
+
+  /* ==========================================
+      TABLE
+  ========================================== */
+
+  .certification-table {
+    @apply w-full border-collapse;
+  }
+
+  .certification-table thead {
+    @apply bg-slate-50;
+  }
+
+  .certification-table thead th {
+    @apply text-left
+    text-slate-700
+    text-lg
+    font-semibold
+    px-8
+    py-4
+    border-b
+    border-slate-200;  }
+
+  .certification-table tbody tr {
+    @apply transition duration-200 hover:bg-slate-50;
+  }
+
+  .certification-table tbody tr:not(:last-child) {
+    @apply border-b border-slate-100;
+  }
+
+  .certification-table tbody td {
+    @apply px-8 py-5 text-slate-700;
+  }
+
+  /* ==========================================
+      STATUS BADGES
+  ========================================== */
+
+  .status-badge {
+    @apply inline-flex items-center justify-center rounded-full px-4 py-1.5 text-sm font-semibold;
+  }
+
+  .status-completed {
+    @apply bg-emerald-100 text-emerald-700;
+  }
+
+  .status-pending {
+    @apply bg-amber-100 text-amber-700;
+  }
+
+  .status-overdue {
+    @apply bg-red-100 text-red-600;
+  }
+
+}
